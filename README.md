@@ -1,3 +1,4 @@
 ### need to have nodejs version 21.6.0
-### run mongo on the terminal
+### npm install
+### connect to your mogno localhost
 ### create prod table
