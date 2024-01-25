@@ -11,7 +11,7 @@ export async function getTopCreatorService() {
 }
 
 export async function getStatisticRuntimeService() {
-    const data = await StatisticModel.aggregate([
+    return StatisticModel.aggregate([
         {
             $project: {
                 _id: 0,
@@ -25,8 +25,6 @@ export async function getStatisticRuntimeService() {
             }
         }
     ]).exec()
-
-    return data
 }
 
 export async function updateStatistic(nameStatic, totalTime) {
