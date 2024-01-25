@@ -6,7 +6,7 @@ const StatisticSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    called_amount: {
+    call_times: {
         type: Number,
         default: 0
     },

@@ -8,10 +8,7 @@ export async function connectFakeDB() {
     try {
         mongod = await MongoMemoryServer.create();
         const dbUrl = mongod.getUri();
-        await mongoose.connect(dbUrl, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(dbUrl, {});
     } catch (e) {
         console.error(e);
         process.exit(1);

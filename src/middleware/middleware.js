@@ -1,12 +1,12 @@
 import {updateStatistic} from "../services/statistic.js";
 import {CREATE_POST_NAME, GET_POSTS_NAME} from "../const.js";
+import {performance} from 'perf_hooks'
 
-
-export async function measureRequestDuration(req, res, next) {
-    const start = Date.now();
+export function updateStatisticMiddleware(req, res, next) {
+    const start = performance.now();
     res.once('finish', () => {
-        const diff = Date.now() - start;
-        if (req.originalUrl == "/posts") {
+        const diff = performance.now() - start;
+        if (req.originalUrl === "/posts") {
             if (req.method === "GET") {
                 updateStatistic(GET_POSTS_NAME, diff / 1000);
             }
