@@ -11,7 +11,7 @@ describe('routes', () => {
     });
     afterAll(async () => {
         await disconnectFakeDB();
-        server.close()
+        await server.close()
     });
     beforeEach(async () => {
         await clearFakeDB()
@@ -23,7 +23,7 @@ describe('routes', () => {
             const res = await request.post('/posts').send({
                 title: 'number 1',
                 body: 'body 1',
-                owner: 'dani'
+                user: 'dani'
             });
             expect(res.status).toBe(200);
         });
@@ -34,17 +34,17 @@ describe('routes', () => {
             await request.post('/posts').send({
                 title: 'number 1',
                 body: 'body 1',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
-                owner: 'shlomi'
+                user: 'shlomi'
             });
         })
         it('get regular', async () => {
@@ -66,17 +66,17 @@ describe('routes', () => {
             await request.post('/posts').send({
                 title: 'number 1',
                 body: 'body 1',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
-                owner: 'shlomi'
+                user: 'shlomi'
             });
             const res = await request.get('/postsnumber')
             expect(res.status).toBe(200);
@@ -89,25 +89,25 @@ describe('routes', () => {
             await request.post('/posts').send({
                 title: 'number 1',
                 body: 'body 1',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
-                owner: 'shlomi'
+                user: 'shlomi'
             });
         })
         it('test', async () => {
             const res = await request.get('/statistics/topcreators')
             expect(res.status).toBe(200);
             expect(res.body.length).toBe(2)
-            expect(res.body[0]).toEqual({owner: 'dani', count: 2})
-            expect(res.body[1]).toEqual({owner: 'shlomi', count: 1})
+            expect(res.body[0]).toEqual({name: 'dani', postsCounts: 2})
+            expect(res.body[1]).toEqual({name: 'shlomi', postsCounts: 1})
         });
     })
 
@@ -116,19 +116,19 @@ describe('routes', () => {
             await request.post('/posts').send({
                 title: 'number 1',
                 body: 'body 1',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
-                owner: 'dani'
+                user: 'dani'
             });
             await request.get('/posts')
 
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
-                owner: 'shlomi'
+                user: 'shlomi'
             });
 
         })

@@ -1,9 +1,9 @@
 import express from 'express'
-import {getRuntimeController, getTopCreator} from "../controllers/statistic.js";
+import {getRuntime, getTopCreator} from "../controllers/statistic.js";
 
 const router = express.Router();
 
 router.get("/topcreators", getTopCreator)
-router.get("/runtimes", getRuntimeController)
+router.get("/runtimes", getRuntime)
 
 export default router

@@ -1,7 +1,7 @@
 import express from 'express'
 import {create, getAll, total} from "../controllers/post.js";
 import {updateStatisticMiddleware} from "../middleware/updateStatistic.js";
-import {createPostSchema, getPostsSchema} from "./schema.js";
+import {createPostSchema, getPostsSchema} from "./schema/request.js";
 
 const router = express.Router();
 

@@ -14,8 +14,9 @@ const StatisticSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-});
+}, {versionKey: false})
 
-const StatisticModel = mongoose.model("Statistic", StatisticSchema);
+StatisticSchema.index({name: 1})
+const StatisticModel = mongoose.model("Statistic", StatisticSchema)
 
-export default StatisticModel;
+export default StatisticModel

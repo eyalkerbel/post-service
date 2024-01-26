@@ -1,13 +1,23 @@
 import PostModel from "../models/post.js";
 import StatisticModel from "../models/statistic.js";
+import UserModel from "../models/user.js";
 
 export async function getTopCreatorService() {
-    return PostModel.aggregate([
-        {$group: {_id: '$owner', owner: {$first: '$owner'}, count: {$sum: 1}}},
-        {$sort: {count: -1}},
-        {$limit: 10},
-        {$project: {_id: 0, owner: 1, count: 1}}
-    ]).exec();
+    return UserModel.aggregate([
+        {
+            $sort: {postsCounts: -1}
+        },
+        {
+            $limit: 10
+        },
+        {
+            $project: {
+                _id: 0,
+                name: 1,
+                postsCounts: 1
+            }
+        }
+    ])
 }
 
 export async function getRuntimeService() {
