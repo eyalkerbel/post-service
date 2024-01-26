@@ -1,8 +1,8 @@
-# compiled output
+#compiled output
 /dist
 /node_modules
 
-# IDEs and editors
+#IDEs and editors
 /.idea
 /.idea/misc.xml
 /.idea/modules.xml
