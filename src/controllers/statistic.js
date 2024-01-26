@@ -1,7 +1,7 @@
-import {getStatisticRuntimeService, getTopCreatorService} from "../services/statistic.js";
+import {getTopCreatorService} from "../services/statistic.js";
 
 
-export async function getTopCreatorController(req, res) {
+export async function getTopCreator(req, res) {
     try {
         const topCreators = await getTopCreatorService();
         res.json(topCreators);
@@ -11,9 +11,9 @@ export async function getTopCreatorController(req, res) {
     }
 }
 
-export async function getStatisticRuntimeController(req, res) {
+export async function getRuntimeController(req, res) {
     try {
-        const statisticRuntimes = await getStatisticRuntimeService();
+        const statisticRuntimes = await getRuntimeService();
         res.json(statisticRuntimes);
     } catch (error) {
         console.error(error);

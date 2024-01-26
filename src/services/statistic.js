@@ -10,7 +10,7 @@ export async function getTopCreatorService() {
     ]).exec();
 }
 
-export async function getStatisticRuntimeService() {
+export async function getRuntimeService() {
     return StatisticModel.aggregate([
         {
             $project: {

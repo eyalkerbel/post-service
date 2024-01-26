@@ -17,6 +17,7 @@ const PostSchema = new mongoose.Schema({
 
 });
 
+PostSchema.index({owner: 1});
 const PostModel = mongoose.model("Post", PostSchema);
 
 export default PostModel;

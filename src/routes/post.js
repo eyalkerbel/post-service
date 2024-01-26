@@ -1,12 +1,12 @@
 import express from 'express'
-import {createPostController, getPostController, getPostsAmountController} from "../controllers/post.js";
-import {updateStatisticMiddleware} from "../middleware/middleware.js";
+import {create, getAll, total} from "../controllers/post.js";
+import {updateStatisticMiddleware} from "../middleware/updateStatistic.js";
 import {createPostSchema, getPostsSchema} from "./schema.js";
 
 const router = express.Router();
 
-router.get("/posts", updateStatisticMiddleware, getPostsSchema, getPostController)
-router.post("/posts", updateStatisticMiddleware, createPostSchema, createPostController)
-router.get("/postsnumber", getPostsAmountController)
+router.get("/posts", updateStatisticMiddleware, getPostsSchema, getAll);
+router.post("/posts", updateStatisticMiddleware, createPostSchema, create)
+router.get("/postsnumber", total)
 
 export default router
