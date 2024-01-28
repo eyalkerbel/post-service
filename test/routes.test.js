@@ -80,7 +80,7 @@ describe('routes', () => {
             });
             const res = await request.get('/postsnumber')
             expect(res.status).toBe(200);
-            expect(res.body.amount).toBe(3)
+            expect(res.body.postsNumber).toBe(3)
         });
     });
 
