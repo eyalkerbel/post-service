@@ -7,10 +7,10 @@ const request = supertest(app);
 
 describe('routes', () => {
     beforeAll(async () => {
-        await connectFakeDB();
+        await connectFakeDB()
     });
     afterAll(async () => {
-        await disconnectFakeDB();
+        await disconnectFakeDB()
         await server.close()
     });
     beforeEach(async () => {
@@ -24,8 +24,10 @@ describe('routes', () => {
                 title: 'number 1',
                 body: 'body 1',
                 user: 'dani'
-            });
-            expect(res.status).toBe(201);
+            })
+            expect(res.status).toBe(201)
+            expect(res.body.title).toBe('number 1')
+            expect(res.body.body).toBe('body 1')
         });
     });
 
@@ -35,24 +37,24 @@ describe('routes', () => {
                 title: 'number 1',
                 body: 'body 1',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
                 user: 'shlomi'
-            });
+            })
         })
         it('get regular', async () => {
             const res = await request.get('/posts')
             expect(res.status).toBe(200);
             expect(res.body.length).toBe(3)
             expect(res.body[0].title).toBe('number 3')
-        });
+        })
         it('index and limit', async () => {
             const res = await request.get('/posts').query({limit: 2, start: 1})
             expect(res.status).toBe(200);
@@ -67,21 +69,21 @@ describe('routes', () => {
                 title: 'number 1',
                 body: 'body 1',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
                 user: 'shlomi'
-            });
+            })
             const res = await request.get('/postsnumber')
             expect(res.status).toBe(200);
             expect(res.body.postsNumber).toBe(3)
-        });
+        })
     });
 
     describe('GET statistics/topcreators', () => {
@@ -90,17 +92,17 @@ describe('routes', () => {
                 title: 'number 1',
                 body: 'body 1',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 2',
                 body: 'body 2',
                 user: 'dani'
-            });
+            })
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
                 user: 'shlomi'
-            });
+            })
         })
         it('test', async () => {
             const res = await request.get('/statistics/topcreators')
@@ -108,7 +110,7 @@ describe('routes', () => {
             expect(res.body.length).toBe(2)
             expect(res.body[0]).toEqual({name: 'dani', postsCounts: 2})
             expect(res.body[1]).toEqual({name: 'shlomi', postsCounts: 1})
-        });
+        })
     })
 
     describe('GET statistics/runtimes', () => {
@@ -122,14 +124,14 @@ describe('routes', () => {
                 title: 'number 2',
                 body: 'body 2',
                 user: 'dani'
-            });
+            })
             await request.get('/posts')
 
             await request.post('/posts').send({
                 title: 'number 3',
                 body: 'body 3',
                 user: 'shlomi'
-            });
+            })
 
         })
 
@@ -139,7 +141,7 @@ describe('routes', () => {
             expect(res.body.length).toBe(2)
             expect(res.body[0].name).toEqual(CREATE_POST_NAME)
             expect(res.body[1].name).toEqual(GET_POSTS_NAME)
-        });
+        })
     })
 
-});
+})
