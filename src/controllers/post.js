@@ -26,7 +26,7 @@ export async function create(req, res) {
 export async function total(req, res) {
     try {
         const posts = await totalService()
-        res.status(200).json({amount: posts})
+        res.status(200).json({postsNumber: posts})
     } catch (error) {
         console.error(error)
         res.status(error.message).send(error.status)
