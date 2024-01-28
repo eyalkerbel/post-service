@@ -25,7 +25,7 @@ describe('routes', () => {
                 body: 'body 1',
                 user: 'dani'
             });
-            expect(res.status).toBe(200);
+            expect(res.status).toBe(201);
         });
     });
 
