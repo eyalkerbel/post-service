@@ -1,4 +1,3 @@
-import PostModel from "../models/post.js";
 import StatisticModel from "../models/statistic.js";
 import UserModel from "../models/user.js";
 
