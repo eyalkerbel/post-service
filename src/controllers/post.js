@@ -16,7 +16,7 @@ export async function create(req, res) {
     try {
         const {user, title, body} = req.body
         const data = await createService({user, title, body})
-        return res.status(200).send(data)
+        return res.status(201).send(data)
     } catch (error) {
         console.error(error);
         res.status(error.status).send(error.error)
